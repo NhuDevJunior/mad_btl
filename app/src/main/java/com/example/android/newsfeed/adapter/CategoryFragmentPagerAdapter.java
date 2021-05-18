@@ -27,6 +27,7 @@ package com.example.android.newsfeed.adapter;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import android.content.Context;
+
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android.newsfeed.R;
@@ -39,7 +40,11 @@ import com.example.android.newsfeed.fragment.ScienceFragment;
 import com.example.android.newsfeed.fragment.SocietyFragment;
 import com.example.android.newsfeed.fragment.SportFragment;
 import com.example.android.newsfeed.fragment.WorldFragment;
+import com.example.android.newsfeed.model.Section;
 import com.example.android.newsfeed.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Provides the appropriate {@link Fragment} for a view pager.
@@ -48,7 +53,9 @@ import com.example.android.newsfeed.utils.Constants;
 public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
 
     /** Context of the app */
-    private Context mContext;
+    private final Context mContext;
+
+    private List<Section> sectionList = new ArrayList<>();
 
     /**
      * Create a new {@link CategoryFragmentPagerAdapter} object.
@@ -60,6 +67,10 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     public CategoryFragmentPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
+    }
+
+    public void setSectionList(List<Section> sectionList) {
+        this.sectionList = sectionList;
     }
 
     /**

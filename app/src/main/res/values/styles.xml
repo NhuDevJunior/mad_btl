@@ -89,6 +89,13 @@
         <item name="android:paddingRight">@dimen/padding</item>
     </style>
 
+    <!--  Style for user info  -->
+    <style name="UserNameStyle">
+        <item name="fontFamily">sans-serif-condensed-medium</item>
+        <item name="color">@color/white</item>
+        <item name="android:textSize">@dimen/sp16</item>
+    </style>
+
     <!-- Style for Section, Author, and Date TextView -->
     <style name="SectionAuthorDateStyle">
         <item name="android:layout_width">wrap_content</item>

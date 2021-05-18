@@ -38,6 +38,7 @@
     <dimen name="card_corner_radius">2dp</dimen>
     <dimen name="thumbnail_image_width">140dp</dimen>
     <dimen name="thumbnail_image_height">120dp</dimen>
+    <dimen name="avatar_size">50dp</dimen>
 
     <dimen name="sp22">22sp</dimen>
     <dimen name="sp16">16sp</dimen>

@@ -37,16 +37,24 @@ public class Constants {
     }
 
     /**  Extract the key associated with the JSONObject */
-    static final String JSON_KEY_RESPONSE = "response";
-    static final String JSON_KEY_RESULTS = "results";
-    static final String JSON_KEY_WEB_TITLE = "webTitle";
-    static final String JSON_KEY_SECTION_NAME = "sectionName";
-    static final String JSON_KEY_WEB_PUBLICATION_DATE = "webPublicationDate";
-    static final String JSON_KEY_WEB_URL = "webUrl";
-    static final String JSON_KEY_TAGS = "tags";
-    static final String JSON_KEY_FIELDS = "fields";
-    static final String JSON_KEY_THUMBNAIL = "thumbnail";
-    static final String JSON_KEY_TRAIL_TEXT = "trailText";
+    public static final String JSON_KEY_RESPONSE = "response";
+    public static final String JSON_KEY_RESULTS = "results";
+    public static final String JSON_KEY_ID = "id";
+    public static final String JSON_KEY_API_URL = "apiUrl";
+    public static final String JSON_KEY_WEB_TITLE = "webTitle";
+    public static final String JSON_KEY_SECTION_NAME = "sectionName";
+    public static final String JSON_KEY_WEB_PUBLICATION_DATE = "webPublicationDate";
+    public static final String JSON_KEY_WEB_URL = "webUrl";
+    public static final String JSON_KEY_TAGS = "tags";
+    public static final String JSON_KEY_FIELDS = "fields";
+    public static final String JSON_KEY_THUMBNAIL = "thumbnail";
+    public static final String JSON_KEY_TRAIL_TEXT = "trailText";
+    public static final String JSON_KEY_FACEBOOK_ID = "id";
+    public static final String JSON_KEY_FACEBOOK_NAME = "name";
+    public static final String JSON_KEY_FACEBOOK_EMAIL = "email";
+    public static final String JSON_KEY_FACEBOOK_PICTURE = "picture";
+    public static final String JSON_KEY_FACEBOOK_DATA = "data";
+    public static final String JSON_KEY_FACEBOOK_URL = "url";
 
     /** Read timeout for setting up the HTTP request */
     static final int READ_TIMEOUT = 10000; /* milliseconds */
@@ -61,7 +69,12 @@ public class Constants {
     static final String REQUEST_METHOD_GET = "GET";
 
     /** URL for news data from the guardian data set */
-    public static final String NEWS_REQUEST_URL = "https://content.guardianapis.com/search";
+    public static final String NEWS_REQUEST_URL = "https://content.guardianapis.com";
+    public static final String FACEBOOK_REQUEST_URL = "https://graph.facebook.com";
+
+    /** End points */
+    public static final String SECTION_ENDPOINT = "sections";
+    public static final String CONTENT_ENDPOINT = "search";
 
     /** Parameters */
     public static final String QUERY_PARAM = "q";
@@ -74,6 +87,11 @@ public class Constants {
     public static final String SHOW_TAGS_PARAM = "show-tags";
     public static final String API_KEY_PARAM = "api-key";
     public static final String SECTION_PARAM = "section";
+    public static final String FACEBOOK_FIELD_PARAM = "fields";
+
+    /** Facebook permissions */
+    public static final String FACEBOOK_PERMISSION_PUBLIC_PROFILE = "public_profile";
+    public static final String FACEBOOK_PERMISISON_EMAIL = "email";
 
     /** The show fields we want our API to return */
     public static final String SHOW_FIELDS = "thumbnail,trailText";
@@ -100,5 +118,9 @@ public class Constants {
     public static final int FASHION = 6;
     public static final int BUSINESS = 7;
     public static final int CULTURE = 8;
+
+    /** Constants error message */
+    public static final String ERROR_PARSING_JSON = "Problem parsing the news JSON results";
+    public static final String ERROR_HTTP_REQUEST = "Problem making the HTTP request.";
 
 }

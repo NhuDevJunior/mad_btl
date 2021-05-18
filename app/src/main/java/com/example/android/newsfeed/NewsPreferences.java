@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 
 import com.example.android.newsfeed.utils.Constants;
 
@@ -78,7 +79,8 @@ public final class NewsPreferences {
                 context.getString(R.string.settings_from_date_default));
 
         // Parse breaks apart the URI string that is passed into its parameter
-        Uri baseUri = Uri.parse(Constants.NEWS_REQUEST_URL);
+        String urlEndpoint = TextUtils.join("/", new String[] {Constants.NEWS_REQUEST_URL, Constants.CONTENT_ENDPOINT});
+        Uri baseUri = Uri.parse(urlEndpoint);
 
         // buildUpon prepares the baseUri that we just parsed so we can add query parameters to it
         Uri.Builder uriBuilder = baseUri.buildUpon();
