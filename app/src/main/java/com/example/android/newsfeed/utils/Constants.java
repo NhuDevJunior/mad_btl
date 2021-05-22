@@ -108,19 +108,14 @@ public class Constants {
     /** Default number to set the image on the top of the textView */
     public static final int DEFAULT_NUMBER = 0;
 
-    /** Constants value for each fragment */
-    public static final int HOME = 0;
-    public static final int WORLD = 1;
-    public static final int SCIENCE = 2;
-    public static final int SPORT = 3;
-    public static final int ENVIRONMENT = 4;
-    public static final int SOCIETY = 5;
-    public static final int FASHION = 6;
-    public static final int BUSINESS = 7;
-    public static final int CULTURE = 8;
-
     /** Constants error message */
     public static final String ERROR_PARSING_JSON = "Problem parsing the news JSON results";
     public static final String ERROR_HTTP_REQUEST = "Problem making the HTTP request.";
+
+    /** Share preferences key */
+    public static final String SHARE_PREFERENCE_KEY_TOKEN = "token";
+
+    /** Intent extra key */
+    public static final String INTENT_EXTRA_NEWS = "news";
 
 }

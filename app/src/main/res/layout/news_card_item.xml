@@ -96,13 +96,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/date_card"
-                    style="@style/DateTextViewStyle"
-                    android:layout_alignParentStart="true"
-                    android:layout_toStartOf="@+id/share_image_card"
-                    tools:text="date" />
-
                 <ImageView
                     android:id="@+id/share_image_card"
                     android:layout_width="@dimen/image_share"

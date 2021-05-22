@@ -24,6 +24,7 @@
 
 package com.example.android.newsfeed.adapter;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import android.content.Context;
@@ -31,31 +32,19 @@ import android.content.Context;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android.newsfeed.R;
-import com.example.android.newsfeed.fragment.BusinessFragment;
-import com.example.android.newsfeed.fragment.CultureFragment;
-import com.example.android.newsfeed.fragment.EnvironmentFragment;
-import com.example.android.newsfeed.fragment.FashionFragment;
-import com.example.android.newsfeed.fragment.HomeFragment;
-import com.example.android.newsfeed.fragment.ScienceFragment;
-import com.example.android.newsfeed.fragment.SocietyFragment;
-import com.example.android.newsfeed.fragment.SportFragment;
-import com.example.android.newsfeed.fragment.WorldFragment;
-import com.example.android.newsfeed.model.Section;
-import com.example.android.newsfeed.utils.Constants;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.android.newsfeed.fragment.HighlightNewsFragment;
+import com.example.android.newsfeed.fragment.NewestNewsFragment;
 
 /**
  * Provides the appropriate {@link Fragment} for a view pager.
  */
-
 public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
+
+    private static final int HOME = 0;
+    private static final int CATEGORY = 1;
 
     /** Context of the app */
     private final Context mContext;
-
-    private List<Section> sectionList = new ArrayList<>();
 
     /**
      * Create a new {@link CategoryFragmentPagerAdapter} object.
@@ -69,36 +58,18 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
     }
 
-    public void setSectionList(List<Section> sectionList) {
-        this.sectionList = sectionList;
-    }
-
     /**
      * Return the {@link Fragment} that should be displayed for the given page number.
      */
     @Override
+    @NonNull
     public Fragment getItem(int position) {
         switch (position) {
-            case Constants.HOME:
-                return new HomeFragment();
-            case Constants.WORLD:
-                return new WorldFragment();
-            case Constants.SCIENCE:
-                return new ScienceFragment();
-            case Constants.SPORT:
-                return new SportFragment();
-            case Constants.ENVIRONMENT:
-                return new EnvironmentFragment();
-            case Constants.SOCIETY:
-                return new SocietyFragment();
-            case Constants.FASHION:
-                return new FashionFragment();
-            case Constants.BUSINESS:
-                return new BusinessFragment();
-            case Constants.CULTURE:
-                return new CultureFragment();
+            case CATEGORY:
+                return new HighlightNewsFragment();
+            case HOME:
             default:
-                return null;
+                return new NewestNewsFragment();
         }
     }
 
@@ -107,7 +78,7 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 9;
+        return 2;
     }
 
     /**
@@ -117,32 +88,12 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         int titleResId;
         switch (position) {
-            case Constants.HOME:
-                titleResId = R.string.ic_title_home;
+            case CATEGORY:
+                titleResId = R.string.nav_title_highlight;
                 break;
-            case Constants.WORLD:
-                titleResId = R.string.ic_title_world;
-                break;
-            case Constants.SCIENCE:
-                titleResId = R.string.ic_title_science;
-                break;
-            case Constants.SPORT:
-                titleResId = R.string.ic_title_sport;
-                break;
-            case Constants.ENVIRONMENT:
-                titleResId = R.string.ic_title_environment;
-                break;
-            case Constants.SOCIETY:
-                titleResId = R.string.ic_title_society;
-                break;
-            case Constants.FASHION:
-                titleResId = R.string.ic_title_fashion;
-                break;
-            case Constants.BUSINESS:
-                titleResId = R.string.ic_title_business;
-                break;
+            case HOME:
             default:
-                titleResId = R.string.ic_title_culture;
+                titleResId = R.string.nav_title_new;
                 break;
         }
         return mContext.getString(titleResId);

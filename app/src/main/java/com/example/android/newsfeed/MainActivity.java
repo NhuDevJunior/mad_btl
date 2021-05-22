@@ -1,30 +1,7 @@
-/*
- * MIT License
- *
- * Copyright (c) 2018 Soojeong Shin
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 package com.example.android.newsfeed;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -32,6 +9,10 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.android.newsfeed.api.MyApiServiceImpl;
+import com.example.android.newsfeed.api.dto.auth.AuthRequest;
+import com.example.android.newsfeed.api.dto.auth.AuthResponse;
+import com.example.android.newsfeed.viewmodels.NewsViewModel;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -43,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.view.GravityCompat;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -65,12 +47,17 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOG_TAG = MainActivity.class.getName();
     private ViewPager viewPager;
     private CallbackManager callbackManager;
+    private NewsViewModel newsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +91,9 @@ public class MainActivity extends AppCompatActivity
                 new CategoryFragmentPagerAdapter(this, getSupportFragmentManager());
         // Set category fragment pager adapter
         viewPager.setAdapter(pagerAdapter);
+
+        // Set up view model
+        newsViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
 
         // Setup login button
         if (isLoggedIn()) {
@@ -145,25 +135,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
-        if (id == R.id.nav_home) {
-            viewPager.setCurrentItem(Constants.HOME);
-        } else if (id == R.id.nav_world) {
-            viewPager.setCurrentItem(Constants.WORLD);
-        } else if (id == R.id.nav_science) {
-            viewPager.setCurrentItem(Constants.SCIENCE);
-        } else if (id == R.id.nav_sport) {
-            viewPager.setCurrentItem(Constants.SPORT);
-        } else if (id == R.id.nav_environment) {
-            viewPager.setCurrentItem(Constants.ENVIRONMENT);
-        } else if (id == R.id.nav_society) {
-            viewPager.setCurrentItem(Constants.SOCIETY);
-        } else if (id == R.id.nav_fashion) {
-            viewPager.setCurrentItem(Constants.FASHION);
-        } else if (id == R.id.nav_business) {
-            viewPager.setCurrentItem(Constants.BUSINESS);
-        } else if (id == R.id.nav_culture) {
-            viewPager.setCurrentItem(Constants.CULTURE);
-        }
+//        if (id == R.id.nav_home) {
+//            viewPager.setCurrentItem(Constants.HOME);
+//        } else if (id == R.id.nav_world) {
+//            viewPager.setCurrentItem(Constants.CATEGORY);
+//        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -209,6 +185,9 @@ public class MainActivity extends AppCompatActivity
                 String id = data.getString(Constants.JSON_KEY_FACEBOOK_ID);
                 String name = data.getString(Constants.JSON_KEY_FACEBOOK_NAME);
 
+                // Get the JWT from the server
+                getJwtFromServer(id, name);
+
                 // Update the data to the view
                 NavigationView navigationView = findViewById(R.id.nav_view);
                 View headerView = navigationView.getHeaderView(0);
@@ -225,9 +204,10 @@ public class MainActivity extends AppCompatActivity
                             .applyDefaultRequestOptions(RequestOptions.circleCropTransform())
                             .load(Uri.parse(pictureUrl)).into(userAvatar);
                 }
+
+                // Show the user info in the navigation header
                 headerView.findViewById(R.id.user_info).setVisibility(View.VISIBLE);
                 headerView.findViewById(R.id.login_button).setVisibility(View.GONE);
-                Log.i(LOG_TAG, response.getRawResponse());
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.toString());
             }
@@ -238,7 +218,31 @@ public class MainActivity extends AppCompatActivity
         request.executeAsync();
     }
 
-    private void getJwtFromServer() {
+    /**
+     * Get the JWT from the server and save it to the preference file for the api request
+     * @param facebookId user id provided by Facebook API
+     * @param name username provided by Facebook API
+     */
+    private void getJwtFromServer(String facebookId, String name) {
+        Call<AuthResponse> call = MyApiServiceImpl.getInstance().getService().authUser(new AuthRequest(facebookId, name));
+        call.enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String token = response.body().getToken();
+                    SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.share_preference_file_key), MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(Constants.SHARE_PREFERENCE_KEY_TOKEN, token);
+                    editor.apply();
+                    Log.i(LOG_TAG, token);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                Log.e(LOG_TAG, t.getMessage());
+            }
+        });
     }
 
     /**
