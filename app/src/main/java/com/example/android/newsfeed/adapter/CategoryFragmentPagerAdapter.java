@@ -40,8 +40,8 @@ import com.example.android.newsfeed.fragment.NewestNewsFragment;
  */
 public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private static final int HOME = 0;
-    private static final int CATEGORY = 1;
+    private static final int NEWEST = 0;
+    private static final int HIGHLIGHT = 1;
 
     /** Context of the app */
     private final Context mContext;
@@ -65,9 +65,9 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     public Fragment getItem(int position) {
         switch (position) {
-            case CATEGORY:
+            case HIGHLIGHT:
                 return new HighlightNewsFragment();
-            case HOME:
+            case NEWEST:
             default:
                 return new NewestNewsFragment();
         }
@@ -88,10 +88,10 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         int titleResId;
         switch (position) {
-            case CATEGORY:
+            case HIGHLIGHT:
                 titleResId = R.string.nav_title_highlight;
                 break;
-            case HOME:
+            case NEWEST:
             default:
                 titleResId = R.string.nav_title_new;
                 break;

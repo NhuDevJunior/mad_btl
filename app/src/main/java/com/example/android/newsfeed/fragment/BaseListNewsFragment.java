@@ -2,10 +2,7 @@ package com.example.android.newsfeed.fragment;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -16,10 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.android.newsfeed.EmptyRecyclerView;
 import com.example.android.newsfeed.R;
 import com.example.android.newsfeed.adapter.MyNewsAdapter;
-import com.example.android.newsfeed.adapter.NewsAdapter;
 import com.example.android.newsfeed.databinding.FragmentListNewsBinding;
 import com.example.android.newsfeed.model.News;
 import com.example.android.newsfeed.viewmodels.NewsViewModel;
