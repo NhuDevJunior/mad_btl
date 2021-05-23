@@ -67,7 +67,6 @@ public class NewsRepository {
             @Override
             public void onFailure(Call<List<News>> call, Throwable t) {
                 listNews.postValue(null);
-                Log.i(LOG_TAG, call.request().url().toString());
                 Log.e(LOG_TAG, t.getMessage());
             }
         });
@@ -97,7 +96,7 @@ public class NewsRepository {
         return news;
     }
 
-    public MutableLiveData<List<News>> getListNews() {
+    public LiveData<List<News>> getListNews() {
         return listNews;
     }
 

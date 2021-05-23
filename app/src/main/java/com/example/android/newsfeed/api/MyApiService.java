@@ -24,6 +24,6 @@ public interface MyApiService {
     @GET("post/news")
     Call<List<News>> getListNews(@Query("page") int page);
 
-    @POST("post/high-light")
+    @POST("post/hight-light")
     Call<List<News>> getListHighLightNews();
 }

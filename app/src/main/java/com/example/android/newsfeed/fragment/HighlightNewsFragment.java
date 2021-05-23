@@ -1,5 +1,6 @@
 package com.example.android.newsfeed.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.example.android.newsfeed.adapter.MyNewsAdapter;
@@ -18,7 +19,6 @@ public class HighlightNewsFragment extends BaseListNewsFragment {
         newsViewModel.getListHighlightsNews().observe(getActivity(), news -> {
             if (news != null) {
                 newsAdapter.addAll(news);
-                binding.recyclerView.setAdapter(newsAdapter);
                 binding.loadingIndicator.setVisibility(View.GONE);
             }
         });
