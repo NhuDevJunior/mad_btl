@@ -21,6 +21,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.material.navigation.NavigationView;
@@ -181,6 +182,24 @@ public class MainActivity extends AppCompatActivity
         else if(id == R.id.nav_travel)
         {
             viewPager.setCurrentItem(Constants.TRAVEL);
+        switch (id) {
+            case R.id.nav_home:
+                break;
+            case R.id.nav_category:
+                break;
+            case R.id.nav_weather:
+                Intent weatherIntent = new Intent(this, WeatherActivity.class);
+                startActivity(weatherIntent);
+                break;
+            case R.id.nav_stock:
+                break;
+            case R.id.nav_logout:
+                LoginManager.getInstance().logOut();
+                NavigationView navigationView = findViewById(R.id.nav_view);
+                View headerView = navigationView.getHeaderView(0);
+                headerView.findViewById(R.id.user_info).setVisibility(View.GONE);
+                headerView.findViewById(R.id.login_button).setVisibility(View.VISIBLE);
+                navigationView.getMenu().setGroupVisible(R.id.menu_auth, false);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -259,6 +278,7 @@ public class MainActivity extends AppCompatActivity
                 // Show the user info in the navigation header
                 headerView.findViewById(R.id.user_info).setVisibility(View.VISIBLE);
                 headerView.findViewById(R.id.login_button).setVisibility(View.GONE);
+                navigationView.getMenu().setGroupVisible(R.id.menu_auth, true);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.toString());
             }

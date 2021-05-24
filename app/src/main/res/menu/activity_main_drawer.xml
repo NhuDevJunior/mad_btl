@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ MIT License
   ~
   ~
@@ -27,7 +26,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_navigation"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_new"
             android:icon="@drawable/ic_menu_home"
@@ -72,7 +73,26 @@
             android:id="@+id/nav_travel"
             android:icon="@drawable/ic_menu_society"
             android:title="@string/ic_title_travel" />
-
-
+      <item
+            android:id="@+id/nav_category"
+            android:icon="@drawable/ic_menu_world"
+            android:title="@string/ic_title_category" />
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_weather_24"
+            android:title="@string/label_weather" />
+        <item
+            android:id="@+id/nav_stock"
+            android:icon="@drawable/ic_stock_24"
+            android:title="@string/label_stock" />
+    </group>
+    <group
+        android:id="@+id/menu_auth"
+        android:checkableBehavior="single"
+        android:visible="false">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout_24"
+            android:title="@string/label_logout" />
     </group>
 </menu>
