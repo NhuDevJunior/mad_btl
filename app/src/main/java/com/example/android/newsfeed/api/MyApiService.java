@@ -23,7 +23,10 @@ public interface MyApiService {
 
     @GET("post/news")
     Call<List<News>> getListNews(@Query("page") int page);
-
+    @GET("post/category/{category}")
+    Call<List<News>> getListNewsByCategory(@Path("category") String category);
+    @GET("post/search")
+    Call<List<News>> getListNewsByKeyword(@Query("keyword") String keyword);
     @POST("post/hight-light")
     Call<List<News>> getListHighLightNews();
 }

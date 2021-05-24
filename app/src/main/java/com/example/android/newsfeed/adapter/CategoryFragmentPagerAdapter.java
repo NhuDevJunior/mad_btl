@@ -32,16 +32,25 @@ import android.content.Context;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.android.newsfeed.R;
+import com.example.android.newsfeed.fragment.CuisineNewsFragment;
+import com.example.android.newsfeed.fragment.EntertainmentNewsFragment;
+import com.example.android.newsfeed.fragment.FootballInterNewsFragment;
+import com.example.android.newsfeed.fragment.FootballVNNewsFragment;
 import com.example.android.newsfeed.fragment.HighlightNewsFragment;
+import com.example.android.newsfeed.fragment.LawsNewsFragment;
 import com.example.android.newsfeed.fragment.NewestNewsFragment;
+import com.example.android.newsfeed.fragment.NewsTimeFragment;
+import com.example.android.newsfeed.fragment.TechnologyNewsFragment;
+import com.example.android.newsfeed.fragment.TravelingNewsFragment;
+import com.example.android.newsfeed.fragment.WorldNewsFragment;
+import com.example.android.newsfeed.utils.Constants;
 
 /**
  * Provides the appropriate {@link Fragment} for a view pager.
  */
 public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private static final int NEWEST = 0;
-    private static final int HIGHLIGHT = 1;
+
 
     /** Context of the app */
     private final Context mContext;
@@ -65,11 +74,30 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     public Fragment getItem(int position) {
         switch (position) {
-            case HIGHLIGHT:
+            case Constants.HIGHLIGHT:
                 return new HighlightNewsFragment();
-            case NEWEST:
-            default:
+            case Constants.NEWEST:
                 return new NewestNewsFragment();
+            case Constants.NEWSTIME:
+                return new NewsTimeFragment();
+            case Constants.FOOTBALLVN:
+                return new FootballVNNewsFragment();
+            case Constants.FOOTBALLINTER:
+                return new FootballInterNewsFragment();
+            case Constants.ENTERTAINMENT:
+                return new EntertainmentNewsFragment();
+            case Constants.WORLD:
+                return new WorldNewsFragment();
+            case Constants.LAW:
+                return new LawsNewsFragment();
+            case Constants.TECHNOLOGY:
+                return new TechnologyNewsFragment();
+            case Constants.CUISINE:
+                return new CuisineNewsFragment();
+            case Constants.TRAVEL:
+                return  new TravelingNewsFragment();
+            default:
+                return null;
         }
     }
 
@@ -78,7 +106,7 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 2;
+        return 11;
     }
 
     /**
@@ -88,12 +116,38 @@ public class CategoryFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         int titleResId;
         switch (position) {
-            case HIGHLIGHT:
+            case Constants.HIGHLIGHT:
                 titleResId = R.string.nav_title_highlight;
                 break;
-            case NEWEST:
-            default:
+            case Constants.NEWEST:
                 titleResId = R.string.nav_title_new;
+                break;
+            case Constants.NEWSTIME:
+                titleResId = R.string.nav_title_newsTime;
+                break;
+            case Constants.FOOTBALLVN:
+                titleResId = R.string.nav_title_footballVN;
+                break;
+            case Constants.FOOTBALLINTER:
+                titleResId = R.string.nav_title_footballInter;
+                break;
+            case Constants.ENTERTAINMENT:
+                titleResId = R.string.nav_title_entertainment;
+                break;
+            case Constants.WORLD:
+                titleResId = R.string.nav_title_world;
+                break;
+            case Constants.LAW:
+                titleResId = R.string.nav_title_law;
+                break;
+            case Constants.TECHNOLOGY:
+                titleResId = R.string.nav_title_technology;
+                break;
+            case Constants.CUISINE:
+                titleResId = R.string.nav_title_cuisine;
+                break;
+            default:
+                titleResId = R.string.nav_title_travel;
                 break;
         }
         return mContext.getString(titleResId);
