@@ -12,6 +12,7 @@
     <!--  Button Label  -->
     <string name="label_login">Đăng nhập bằng Facebook</string>
     <string name="label_logout">Đăng xuất</string>
+    <string name="label_category">Danh mục</string>
     <string name="label_weather">Thời tiết</string>
     <string name="label_stock">Chứng khoán</string>
 

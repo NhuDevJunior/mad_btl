@@ -179,12 +179,10 @@ public class MainActivity extends AppCompatActivity
         {
             viewPager.setCurrentItem(Constants.CUISINE);
         }
-        else if(id == R.id.nav_travel)
-        {
+        else if(id == R.id.nav_travel) {
             viewPager.setCurrentItem(Constants.TRAVEL);
+        }
         switch (id) {
-            case R.id.nav_home:
-                break;
             case R.id.nav_category:
                 break;
             case R.id.nav_weather:
