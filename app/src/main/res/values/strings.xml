@@ -12,6 +12,8 @@
     <!--  Button Label  -->
     <string name="label_login">Đăng nhập bằng Facebook</string>
     <string name="label_logout">Đăng xuất</string>
+    <string name="label_weather">Thời tiết</string>
+    <string name="label_stock">Chứng khoán</string>
 
     <!-- Strings for items in activity_main_drawer.xml -->
     <string name="ic_title_home">Trang chủ</string>
@@ -145,5 +147,6 @@
 
     <!--  Share preferences  -->
     <string name="share_preference_file_key">com.example.android.newsfeed.prefs</string>
+    <string name="weather_title">Thời tiết hôm nay</string>
 
 </resources>
