@@ -35,18 +35,7 @@ public class Constants {
      */
     private Constants() {
     }
-    /** Extract params into API for  category path
-     *
-     */
-    public static final String CATEGORY_FOOTBALL_VN = "Bóng đá Việt Nam";
-    public static final String CATEGORY_FOOTBALL_INTER = "Bóng đá quốc tế";
-    public static final String CATEGORY_NEWSTIME = "Thời sự";
-    public static final String CATEGORY_ENTERTAINMENT = "Giải trí";
-    public static final String CATEGORY_WORLD = "Thế giới";
-    public static final String CATEGORY_LAW = "Pháp luật";
-    public static final String CATEGORY_TECHNOLOGY = "Công nghệ";
-    public static final String CATEGORY_CUISINE = "Ẩm thực";
-    public static final String CATEGORY_TRAVEL = "Du lịch";
+
     /**  Extract the key associated with the JSONObject */
     public static final String JSON_KEY_FACEBOOK_ID = "id";
     public static final String JSON_KEY_FACEBOOK_NAME = "name";
@@ -69,16 +58,5 @@ public class Constants {
 
     /** Intent extra key */
     public static final String INTENT_EXTRA_NEWS = "news";
-    public static final int NEWEST = 0;
-    public static final int HIGHLIGHT = 1;
-    public static final int NEWSTIME = 2;
-    public static final int FOOTBALLVN = 3;
-    public static final int FOOTBALLINTER = 4;
-    public static final int ENTERTAINMENT = 5;
-    public static final int WORLD = 6;
-    public static final int LAW = 7;
-    public static final int TECHNOLOGY = 8;
-    public static final int CUISINE = 9;
-    public static final int TRAVEL = 10;
 
 }

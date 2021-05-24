@@ -16,7 +16,7 @@ public class HighlightNewsFragment extends BaseListNewsFragment {
 
     @Override
     protected void observeListNews() {
-        newsViewModel.getListHighlightsNews().observe(getViewLifecycleOwner(), news -> {
+        newsViewModel.getListHighlightsNews().observe(getActivity(), news -> {
             if (news != null) {
                 newsAdapter.addAll(news);
                 binding.loadingIndicator.setVisibility(View.GONE);
