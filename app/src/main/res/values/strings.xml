@@ -14,20 +14,43 @@
     <string name="label_logout">Đăng xuất</string>
 
     <!-- Strings for items in activity_main_drawer.xml -->
-    <string name="ic_title_home">Trang chủ</string>
-    <string name="ic_title_category">Danh mục</string>
-
+    <string name="ic_title_new">Mới nhất</string>
+    <string name="ic_title_highlight">Nổi bật</string>
+    <string name="ic_title_footballVN">Bóng đá Việt Nam</string>
+    <string name="ic_title_footballInter">Bóng đá quốc tế</string>
+    <string name="ic_title_entertainment">Giải trí</string>
+    <string name="ic_title_cuisine">Ẩm thực</string>
+    <string name="ic_title_law">Pháp luật</string>
+    <string name="ic_title_newsTime">Thời sự</string>
+    <string name="ic_title_technology">Công nghệ</string>
+    <string name="ic_title_travel">Du lịch</string>
+    <string name="ic_title_world">Thế giới</string>
     <!--  Strings for top navigation bar  -->
     <string name="nav_title_new">Mới nhất</string>
+    <string name="nav_title_footballVN">Bóng đá Việt Nam</string>
     <string name="nav_title_highlight">Nổi bật</string>
-
+    <string name="nav_title_footballInter">Bóng đá quốc tế</string>
+    <string name="nav_title_entertainment">Giải trí</string>
+    <string name="nav_title_cuisine">Ẩm thực</string>
+    <string name="nav_title_law">Pháp luật</string>
+    <string name="nav_title_newsTime">Thời sự</string>
+    <string name="nav_title_technology">Công nghệ</string>
+    <string name="nav_title_travel">Du lịch</string>
+    <string name="nav_title_world">Thế giới</string>
     <!-- Text to display in the list when there are no news [CHAR LIMIT=NONE] -->
     <string name="no_news">No news found.</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">You are offline. \nPlease check your Internet
         connection.</string>
-
+    <!-- Define string for fastKey -->
+    <string name="fastKey01">Hà Nội</string>
+    <string name="fastKey02">Vi phạm</string>
+    <string name="fastKey03">Giao thông</string>
+    <string name="fastKey04">Ngoại giao</string>
+    <string name="fastKey05">Du lich</string>
+    <string name="fastKey06">Công nghệ thông tin</string>
+    <string name="fastKey07">V-league</string>
     <!-- Content description of the image -->
     <string name="image_des">Image</string>
     <string name="image_des_ic_share">Share</string>
@@ -35,7 +58,7 @@
     <string name="updated_just_now">Cập nhật thành công</string>
     <string name="share_article">Share Article</string>
 
-    <string name="the_guardian">theguardian</string>
+    <string name="doc_bao">Đọc báo</string>
 
     <!-- Strings for Section -->
     <string name="world">world</string>

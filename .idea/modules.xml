@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android-news-app.iml" filepath="$PROJECT_DIR$/.idea/modules/android-news-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android-news-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android-news-app.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mad_btl.iml" filepath="$PROJECT_DIR$/.idea/modules/mad_btl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mad_btl.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mad_btl.app.iml" />
     </modules>
   </component>
 </project>
