@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ MIT License
   ~
   ~ Copyright (c) 2018 Soojeong Shin
@@ -27,14 +26,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_navigation"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_home"
             android:title="@string/ic_title_home" />
         <item
-            android:id="@+id/nav_world"
+            android:id="@+id/nav_category"
             android:icon="@drawable/ic_menu_world"
             android:title="@string/ic_title_category" />
+    </group>
+    <group
+        android:id="@+id/menu_auth"
+        android:visible="false"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout_24"
+            android:title="@string/label_logout" />
     </group>
 </menu>
