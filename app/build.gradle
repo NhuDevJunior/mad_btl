@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\LENOVO\\.android\\debug.keystore')
+            storeFile file('C:\\Users\\Noobcoder\\.android\\debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
