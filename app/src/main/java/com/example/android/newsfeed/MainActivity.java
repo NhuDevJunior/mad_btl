@@ -1,7 +1,10 @@
 package com.example.android.newsfeed;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -25,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -38,7 +42,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.newsfeed.adapter.CategoryFragmentPagerAdapter;
 import com.example.android.newsfeed.utils.Constants;
@@ -136,11 +142,46 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
-//        if (id == R.id.nav_home) {
-//            viewPager.setCurrentItem(Constants.HOME);
-//        } else if (id == R.id.nav_world) {
-//            viewPager.setCurrentItem(Constants.CATEGORY);
-//        }
+        if (id == R.id.nav_new) {
+            viewPager.setCurrentItem(Constants.NEWEST);
+        } else if (id == R.id.nav_highlight) {
+            viewPager.setCurrentItem(Constants.HIGHLIGHT);
+        }
+        else if(id == R.id.nav_newsTime)
+        {
+            viewPager.setCurrentItem(Constants.NEWSTIME);
+        }
+        else if(id == R.id.nav_footballVN)
+        {
+            viewPager.setCurrentItem(Constants.FOOTBALLVN);
+        }
+        else if(id == R.id.nav_footballInter)
+        {
+            viewPager.setCurrentItem(Constants.FOOTBALLINTER);
+        }
+        else if(id == R.id.nav_entertainment)
+        {
+            viewPager.setCurrentItem(Constants.ENTERTAINMENT);
+        }
+        else if(id == R.id.nav_world)
+        {
+            viewPager.setCurrentItem(Constants.WORLD);
+        }
+        else if(id == R.id.nav_law)
+        {
+            viewPager.setCurrentItem(Constants.LAW);
+        }
+        else if(id == R.id.nav_technology)
+        {
+            viewPager.setCurrentItem(Constants.TECHNOLOGY);
+        }
+        else if(id == R.id.nav_cuisine)
+        {
+            viewPager.setCurrentItem(Constants.CUISINE);
+        }
+        else if(id == R.id.nav_travel)
+        {
+            viewPager.setCurrentItem(Constants.TRAVEL);
         switch (id) {
             case R.id.nav_home:
                 break;
@@ -182,6 +223,15 @@ public class MainActivity extends AppCompatActivity
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
             return true;
+        }
+        else if(id == R.id.action_search)
+        {
+
+
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
+            return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

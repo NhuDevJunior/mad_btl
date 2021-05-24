@@ -35,7 +35,7 @@ public class NewestNewsFragment extends BaseListNewsFragment {
 
     @Override
     protected void observeListNews() {
-        newsViewModel.getListNews().observe(getViewLifecycleOwner(), news -> {
+        newsViewModel.getListNews().observe(getActivity(), news -> {
             if (news != null) {
                 newsAdapter.addAll(news);
                 binding.swipeRefresh.setRefreshing(false);
