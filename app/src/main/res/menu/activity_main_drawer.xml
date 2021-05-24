@@ -37,11 +37,19 @@
             android:id="@+id/nav_category"
             android:icon="@drawable/ic_menu_world"
             android:title="@string/ic_title_category" />
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_weather_24"
+            android:title="@string/label_weather" />
+        <item
+            android:id="@+id/nav_stock"
+            android:icon="@drawable/ic_stock_24"
+            android:title="@string/label_stock" />
     </group>
     <group
         android:id="@+id/menu_auth"
-        android:visible="false"
-        android:checkableBehavior="single">
+        android:checkableBehavior="single"
+        android:visible="false">
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout_24"

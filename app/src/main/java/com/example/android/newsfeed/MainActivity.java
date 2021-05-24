@@ -146,6 +146,12 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_category:
                 break;
+            case R.id.nav_weather:
+                Intent weatherIntent = new Intent(this, WeatherActivity.class);
+                startActivity(weatherIntent);
+                break;
+            case R.id.nav_stock:
+                break;
             case R.id.nav_logout:
                 LoginManager.getInstance().logOut();
                 NavigationView navigationView = findViewById(R.id.nav_view);
