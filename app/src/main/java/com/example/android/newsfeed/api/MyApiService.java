@@ -2,7 +2,12 @@ package com.example.android.newsfeed.api;
 
 import com.example.android.newsfeed.api.dto.auth.AuthRequest;
 import com.example.android.newsfeed.api.dto.auth.AuthResponse;
+import com.example.android.newsfeed.api.dto.comment.GetCommentsRequest;
+import com.example.android.newsfeed.api.dto.comment.NewCommentRequest;
+import com.example.android.newsfeed.api.dto.comment.NewReplyRequest;
+import com.example.android.newsfeed.api.dto.comment.NewReplyResponse;
 import com.example.android.newsfeed.api.dto.news.NewsRequest;
+import com.example.android.newsfeed.model.Comment;
 import com.example.android.newsfeed.model.News;
 
 import java.util.List;
@@ -29,4 +34,13 @@ public interface MyApiService {
     Call<List<News>> getListNewsByKeyword(@Query("keyword") String keyword);
     @POST("post/hight-light")
     Call<List<News>> getListHighLightNews();
+
+    // News comments
+    @POST("comment")
+    Call<Comment> addNewComment(@Body NewCommentRequest newCommentRequest);
+    @POST("reply-comment")
+    Call<NewReplyResponse> addNewReply(@Body NewReplyRequest newReplyRequest);
+    @POST("post-comments")
+    Call<List<Comment>> getNewsComments(@Body GetCommentsRequest getCommentsRequest);
+
 }

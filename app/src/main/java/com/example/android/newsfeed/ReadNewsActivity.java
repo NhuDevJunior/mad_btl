@@ -3,10 +3,12 @@ package com.example.android.newsfeed;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.android.newsfeed.databinding.ActivityReadNewsBinding;
@@ -39,6 +41,16 @@ public class ReadNewsActivity extends AppCompatActivity {
 
         // Set content of the news to the TextView
         binding.newsContent.setHtml(news.getContent(), new HtmlHttpImageGetter(binding.newsContent, null, true));
+
+        // Set up comment button
+        binding.commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent commentIntent = new Intent(ReadNewsActivity.this, CommentActivity.class);
+                commentIntent.putExtra(Constants.INTENT_EXTRA_NEWS_ID, news.getId());
+                startActivity(commentIntent);
+            }
+        });
     }
 
     private void setTextSize() {

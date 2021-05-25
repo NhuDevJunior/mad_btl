@@ -28,7 +28,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.view.GravityCompat;
-import androidx.core.view.MenuItemCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -198,6 +197,9 @@ public class MainActivity extends AppCompatActivity
                 headerView.findViewById(R.id.user_info).setVisibility(View.GONE);
                 headerView.findViewById(R.id.login_button).setVisibility(View.VISIBLE);
                 navigationView.getMenu().setGroupVisible(R.id.menu_auth, false);
+                // Remove the token in the share preferences
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.share_preference_file_key), MODE_PRIVATE);
+                sharedPreferences.edit().remove(Constants.SHARE_PREFERENCE_KEY_TOKEN).apply();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

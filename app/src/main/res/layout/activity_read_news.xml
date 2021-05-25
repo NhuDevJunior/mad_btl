@@ -7,6 +7,20 @@
     tools:context=".ReadNewsActivity">
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/comment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        android:tint="@color/white"
+        android:layout_margin="@dimen/layout_margin"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_message_24"
+        />
+
     <ScrollView
         android:id="@+id/news_container"
         android:layout_width="match_parent"

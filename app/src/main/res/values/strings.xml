@@ -172,5 +172,7 @@
     <!--  Share preferences  -->
     <string name="share_preference_file_key">com.example.android.newsfeed.prefs</string>
     <string name="weather_title">Thời tiết hôm nay</string>
+    <string name="comment_view_replies">Xem phản hồi</string>
+    <string name="hint_comment">Nhập bình luận</string>
 
 </resources>

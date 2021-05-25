@@ -69,6 +69,7 @@ public class Constants {
 
     /** Intent extra key */
     public static final String INTENT_EXTRA_NEWS = "news";
+    public static final String INTENT_EXTRA_NEWS_ID = "newsId";
     public static final int NEWEST = 0;
     public static final int HIGHLIGHT = 1;
     public static final int NEWSTIME = 2;
