@@ -6,6 +6,8 @@ import com.example.android.newsfeed.api.dto.comment.GetCommentsRequest;
 import com.example.android.newsfeed.api.dto.comment.NewCommentRequest;
 import com.example.android.newsfeed.api.dto.comment.NewReplyRequest;
 import com.example.android.newsfeed.api.dto.comment.NewReplyResponse;
+import com.example.android.newsfeed.api.dto.likes.AddLikeNewsRequest;
+import com.example.android.newsfeed.api.dto.likes.GetLikeNewsRequest;
 import com.example.android.newsfeed.api.dto.news.NewsRequest;
 import com.example.android.newsfeed.model.Comment;
 import com.example.android.newsfeed.model.News;
@@ -43,4 +45,10 @@ public interface MyApiService {
     @POST("post-comments")
     Call<List<Comment>> getNewsComments(@Body GetCommentsRequest getCommentsRequest);
 
+    // Like News
+    @POST("user/addFavouritePost")
+    Call<Void> addLikeNews(@Body AddLikeNewsRequest addLikeNewsRequest);
+
+    @POST("user/getFavouritePost")
+    Call<List<News>> getLikeNews(@Body GetLikeNewsRequest getLikeNewsRequest);
 }

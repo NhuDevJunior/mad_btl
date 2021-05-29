@@ -2,25 +2,38 @@ package com.example.android.newsfeed;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.bumptech.glide.Glide;
+import com.example.android.newsfeed.api.dto.likes.AddLikeNewsRequest;
+import com.example.android.newsfeed.api.dto.likes.GetLikeNewsRequest;
 import com.example.android.newsfeed.databinding.ActivityReadNewsBinding;
 import com.example.android.newsfeed.model.News;
 import com.example.android.newsfeed.utils.Constants;
+import com.example.android.newsfeed.viewmodels.LikeNewsViewModel;
 
 import org.sufficientlysecure.htmltextview.HtmlHttpImageGetter;
+
+import java.util.List;
 
 public class ReadNewsActivity extends AppCompatActivity {
 
     private News news;
     private ActivityReadNewsBinding binding;
+    private LikeNewsViewModel likeNewsViewModel;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +56,32 @@ public class ReadNewsActivity extends AppCompatActivity {
         binding.newsContent.setHtml(news.getContent(), new HtmlHttpImageGetter(binding.newsContent, null, true));
 
         // Set up comment button
-        binding.commentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent commentIntent = new Intent(ReadNewsActivity.this, CommentActivity.class);
-                commentIntent.putExtra(Constants.INTENT_EXTRA_NEWS_ID, news.getId());
-                startActivity(commentIntent);
-            }
+        binding.commentButton.setOnClickListener(view -> {
+            Intent commentIntent = new Intent(ReadNewsActivity.this, CommentActivity.class);
+            commentIntent.putExtra(Constants.INTENT_EXTRA_NEWS_ID, news.getId());
+            startActivity(commentIntent);
         });
+
+        likeNewsViewModel = new ViewModelProvider(this).get(LikeNewsViewModel.class);
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.share_preference_file_key), MODE_PRIVATE);
+        token = sharedPreferences.getString(Constants.SHARE_PREFERENCE_KEY_TOKEN, null);
+        if (token != null) {
+            Log.i(ReadNewsActivity.class.getName(), "Loaded");
+            likeNewsViewModel.getLikeNewsList().observe(this, likedNews -> {
+                binding.likeButton.show();
+                // If the user has liked the news then disable it
+                if (likedNews.contains(news)) {
+                    binding.likeButton.setImageResource(R.drawable.ic_favorite_24);
+                } else {
+                    // Set up like button
+                    binding.likeButton.setOnClickListener(view -> {
+                        likeNewsViewModel.addLikeNews(new AddLikeNewsRequest(news.getId(), token));
+                        binding.likeButton.setImageResource(R.drawable.ic_favorite_24);
+                    });
+                }
+            });
+            likeNewsViewModel.getLikeNews(new GetLikeNewsRequest(token));
+        }
     }
 
     private void setTextSize() {

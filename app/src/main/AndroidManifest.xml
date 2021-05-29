@@ -13,11 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CommentActivity"></activity>
+        <activity android:name=".LikedNewsListActivity"
+            android:theme="@style/SettingsTheme"
+            android:label="@string/title_liked_news"></activity>
+        <activity android:name=".CommentActivity" />
         <activity
             android:name=".SearchActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SettingsTheme"></activity>
+            android:theme="@style/SettingsTheme" />
         <activity android:name=".WeatherActivity" />
         <activity android:name=".ReadNewsActivity" />
 

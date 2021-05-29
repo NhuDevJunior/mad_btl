@@ -182,13 +182,13 @@ public class MainActivity extends AppCompatActivity
             viewPager.setCurrentItem(Constants.TRAVEL);
         }
         switch (id) {
-            case R.id.nav_category:
-                break;
             case R.id.nav_weather:
                 Intent weatherIntent = new Intent(this, WeatherActivity.class);
                 startActivity(weatherIntent);
                 break;
-            case R.id.nav_stock:
+            case R.id.nav_favorite:
+                Intent favoriteIntent = new Intent(this, LikedNewsListActivity.class);
+                startActivity(favoriteIntent);
                 break;
             case R.id.nav_logout:
                 LoginManager.getInstance().logOut();

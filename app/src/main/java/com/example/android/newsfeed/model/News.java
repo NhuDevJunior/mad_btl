@@ -3,6 +3,7 @@ package com.example.android.newsfeed.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class News implements Serializable {
 
@@ -81,5 +82,13 @@ public class News implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        News news = (News) o;
+        return id == news.id;
     }
 }

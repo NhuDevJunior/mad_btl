@@ -4,17 +4,18 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Cài đặt</string>
 
     <!--  Activities' title  -->
     <string name="title_login">Đăng nhập</string>
+    <string name="title_liked_news">Danh sách yêu thích</string>
 
     <!--  Button Label  -->
     <string name="label_login">Đăng nhập bằng Facebook</string>
     <string name="label_logout">Đăng xuất</string>
     <string name="label_category">Danh mục</string>
     <string name="label_weather">Thời tiết</string>
-    <string name="label_stock">Chứng khoán</string>
+    <string name="label_favorite">Tin yêu thích</string>
 
     <!-- Strings for items in activity_main_drawer.xml -->
     <string name="ic_title_new">Mới nhất</string>
